@@ -3,7 +3,7 @@ from DFSDemo import DFS
 from pyamaze import maze,agent,COLOR,textLabel
 from timeit import timeit
 
-m=maze(15,10)
+m=maze(20,16)
 m.CreateMaze()
 
 searchPath,dfsPath,fwdDFSPath=DFS(m)

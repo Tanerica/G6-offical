@@ -48,7 +48,7 @@ def dijkstra(m,*h,start=None): #*h là 1 list <=> truyền vào 1 số lượng 
 
 
 if __name__=='__main__':
-    myMaze=maze(20,15)
+    myMaze=maze(20,20)
     myMaze.CreateMaze(1,4)
 
     h1=agent(myMaze,4,4,color=COLOR.red)

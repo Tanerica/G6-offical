@@ -51,7 +51,7 @@ if __name__=='__main__':
     # m.run()
 
 
-    m=maze(17,10)
+    m=maze(20,16)
     # m.CreateMaze(5,4,)
     # m.CreateMaze(,theme=COLOR.dark) # notice this
     m.CreateMaze() # notice this

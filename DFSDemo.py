@@ -40,7 +40,7 @@ def DFS(m,start=None):
     return dSeacrh,dfsPath,fwdPath
 
 if __name__=='__main__':
-    m=maze(10,10) # Change to any size
+    m=maze(20,16) # Change to any size
     m.CreateMaze(2,4) # (2,4) is Goal Cell, Change that to any other valid cell
 
     dSeacrh,dfsPath,fwdPath=DFS(m,(5,1)) # (5,1) is Start Cell, Change that to any other valid cell
