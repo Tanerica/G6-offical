@@ -1,11 +1,28 @@
 from pyamaze import maze,agent,textLabel
 from queue import PriorityQueue
 from math import sqrt
-def h_mahattan(cell1,cell2): #heuristic cho tọa độ 2 ô
-    x1,y1=cell1
-    x2,y2=cell2
-    return abs(x1-x2) + abs(y1-y2) #khoảng cách mahatan
-    # return sqrt((x1-x2)**2 + (y1-y2)**2); # khoảng cách euclide
+def h_euclide(cell1, cell2): #heuristic cho tọa độ 2 ô
+    x1, y1 = cell1
+    x2, y2 = cell2
+    return sqrt((x1-x2)**2+(y1-y2)**2) # Euclide
+def h_mahattan(cell1, cell2): #heuristic cho tọa độ 2 ô
+    x1, y1 = cell1
+    x2, y2 = cell2
+    return (abs(x1 - x2) + abs(y1 - y2)) # mahattan
+def h_diagonal(cell1, cell2): #heuristic cho tọa độ 2 ô
+    x1, y1 = cell1
+    x2, y2 = cell2
+    
+    dx = abs(x1 - x2)
+    dy = abs(y1 - y2)
+    
+    # dx = abs(current_cell.x – goal.x)
+    # dy = abs(current_cell.y – goal.y)
+    
+    h = 1*(dx+dy) + (sqrt(2)-2*1)*min(dx,dy)
+    # h = D * (dx + dy) + (D2 - 2 * D) * min(dx, dy)
+    # where D is length of each node(usually = 1) and D2 is diagonal distance between each node (usually = sqrt(2) ). 
+    return h
 def aStar(m, h): # m is a maze with rows and column
     start=(m.rows,m.cols) # điểm bắt đầu ở cuối maze, (1,1) là đích
     g_score={cell:float('inf') for cell in m.grid} # g là chi phí từ nút gốc đến nút hiện tại n

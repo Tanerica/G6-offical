@@ -1,3 +1,4 @@
+from aStar import h_diagonal
 from pyamaze import maze,agent,COLOR,textLabel
 from timeit import timeit
 from queue import PriorityQueue
@@ -52,26 +53,29 @@ def aStar(m,h,start=None):
         cell=aPath[cell]
     return searchPath,aPath,fwdPath
 
-myMaze=maze(16,15)
-myMaze.CreateMaze()
-searchPath,aPath,fwdPath=aStar(myMaze,h_mahattan)
-searchPath2,aPath2,fwdPath2=aStar(myMaze,h_euclide)
+myMaze=maze(20,20)
+myMaze.CreateMaze() # tạo mê cung
+searchPath,aPath,fwdPath=aStar(myMaze,h_mahattan) #h_mahattan
+searchPath2,aPath2,fwdPath2=aStar(myMaze,h_euclide) #h_euclide
+searchPath3,aPath3,fwdPath3=aStar(myMaze,h_diagonal) #h_diagonal
+
 
 l=textLabel(myMaze,'ManhatPath',len(fwdPath)+1)
 l=textLabel(myMaze,'EuclidPath',len(fwdPath2)+1)
+l=textLabel(myMaze,'DiagonalPath',len(fwdPath3)+1)
+
 l=textLabel(myMaze,'ManhatSearch',len(searchPath)+1)
 l=textLabel(myMaze,'EuclidSeach',len(searchPath2)+1)
+l=textLabel(myMaze,'DiagonalSeach',len(searchPath3)+1)
+
 
 a=agent(myMaze,footprints=True,color=COLOR.cyan,filled=True)
 b=agent(myMaze,footprints=True,color=COLOR.yellow)
-myMaze.tracePath({a:fwdPath},delay=100)
-myMaze.tracePath({b:fwdPath2},delay=100)
+c=agent(myMaze,footprints=True,color=COLOR.red)
 
-t1=timeit(stmt='aStar(myMaze,h_mahattan)',number=100,globals=globals())
-t2=timeit(stmt='aStar(myMaze,h_euclide)',number=100,globals=globals())
-
-textLabel(myMaze,'Manhattan Time',t1) # hiển thị nhãn với tên Mahattan Time và thời gian t1
-textLabel(myMaze,'Euclidean Time',t2)
+myMaze.tracePath({a:fwdPath},delay=70)
+myMaze.tracePath({b:fwdPath2},delay=70)
+myMaze.tracePath({c:fwdPath3},delay=70)
 
 
 myMaze.run()

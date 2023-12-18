@@ -80,7 +80,7 @@ class textLabel: # tạo các nhãn
         self._var.set(f'{self.title} : {v}')
     def drawLabel(self):
         self._var = StringVar()
-        self.lab = Label(self._parentMaze._canvas, textvariable=self._var, bg="white", fg="black",font=('Helvetica bold',12),relief=RIDGE)
+        self.lab = Label(self._parentMaze._canvas, textvariable=self._var, bg="white", fg="black",font=('Helvetica bold',10),relief=RIDGE)
         self._var.set(f'{self.title} : {self.value}') # nhãn sẽ có cấu trúc title - value
         self.lab.pack(expand = True,side=LEFT,anchor=NW) #exphand = true-> cho phép mở rộng ko gian trống
         #anchor = NW -> nhãn nằm ở góc tây bắc North West

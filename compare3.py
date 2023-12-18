@@ -22,9 +22,9 @@ textLabel(m,'BFS Search',len(bSearch)+1)
 a=agent(m,footprints=True,color=COLOR.cyan,filled=True)
 b=agent(m,footprints=True,color=COLOR.yellow)
 c=agent(m,footprints=True) # a xem như người chơi và để lại dấu chân tìm mê cung
-m.tracePath({a:fwdBFSPath},delay=100)
-m.tracePath({b:fwdDFSPath},delay=100)
-m.tracePath({c:path}, delay=100)
+m.tracePath({a:fwdBFSPath},delay=70)
+m.tracePath({b:fwdDFSPath},delay=70)
+m.tracePath({c:path}, delay=70)
 
 t1=timeit(stmt='DFS(m)',number=100,globals=globals())
 t2=timeit(stmt='BFS(m)',number=100,globals=globals())

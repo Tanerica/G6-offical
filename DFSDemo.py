@@ -1,4 +1,5 @@
 # from pyMaze import maze,agent,COLOR,textLabel
+import timeit
 from pyamaze import maze,agent,textLabel,COLOR
 
 def DFS(m,start=None):
@@ -41,16 +42,19 @@ def DFS(m,start=None):
 
 if __name__=='__main__':
     m=maze(20,16) # Change to any size
-    m.CreateMaze(2,4) # (2,4) is Goal Cell, Change that to any other valid cell
+    m.CreateMaze() # (2,4) is Goal Cell, Change that to any other valid cell
 
-    dSeacrh,dfsPath,fwdPath=DFS(m,(5,1)) # (5,1) is Start Cell, Change that to any other valid cell
+    dSeacrh,dfsPath,fwdPath=DFS(m) # (5,1) is Start Cell, Change that to any other valid cell
+    
+    a=agent(m,footprints=True,color=COLOR.green)
+    b=agent(m,footprints=True,filled=True)
+    c=agent(m,footprints=True,color=COLOR.yellow)
+    m.tracePath({a:dSeacrh},delay=80)
+    m.tracePath({b:dfsPath}, delay=80)
+    m.tracePath({c:fwdPath}, delay=80)
 
-    a=agent(m,5,1,goal=(2,4),footprints=True,color=COLOR.green)
-    b=agent(m,2,4,goal=(5,1),footprints=True,filled=True)
-    c=agent(m,5,1,footprints=True,color=COLOR.yellow)
-    m.tracePath({a:dSeacrh},showMarked=True)
-    m.tracePath({b:dfsPath})
-    m.tracePath({c:fwdPath})
+    # t1=timeit(stmt='DFS(m)',number=1000,globals=globals())
+    # textLabel(m,'DFS Time',t1)
     m.run()
 
     ## The code below will generate the maze shown in video

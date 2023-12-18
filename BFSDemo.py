@@ -51,18 +51,18 @@ if __name__=='__main__':
     # m.run()
 
 
-    m=maze(20,16)
+    m=maze(10,16)
     # m.CreateMaze(5,4,)
     # m.CreateMaze(,theme=COLOR.dark) # notice this
     m.CreateMaze() # notice this
     bSearch,bfsPath,fwdPath=BFS(m)
-    a=agent(m,footprints=True,color=COLOR.yellow,filled=True)
-    b=agent(m,footprints=True,color=COLOR.red,filled=False)
+    a=agent(m,footprints=False,color=COLOR.yellow,filled=True)
+    b=agent(m,footprints=False,color=COLOR.red,filled=False)
     # c=agent(m,5,4,footprints=True,color=COLOR.cyan,filled=True,goal=(m.rows,m.cols))
-    c=agent(m,1,1,footprints=True,color=COLOR.cyan,filled=True,goal=(m.rows,m.cols))
-    m.tracePath({a:bSearch},delay=100)
-    m.tracePath({c:bfsPath},delay=100)
-    m.tracePath({b:fwdPath},delay=100)
-    l=textLabel(m,'Length of Shortest Path',len(bfsPath)+1)
-    l=textLabel(m,'Length of Shortest Path',len(bSearch)+1)
+    c=agent(m,1,1,footprints=False,color=COLOR.cyan,filled=True,goal=(m.rows,m.cols))
+    m.tracePath({a:bSearch},delay=50)
+    m.tracePath({c:bfsPath},delay=50)
+    m.tracePath({b:fwdPath},delay=50)
+    l=textLabel(m,'Length of Search Path',len(bfsPath)+1)
+    l=textLabel(m,'Length of Shortest Path',len(fwdPath)+1)
     m.run()
